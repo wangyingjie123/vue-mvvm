@@ -2,8 +2,11 @@
 使用为被打爆配置的文件
 ------
 #使用方法#</br>
-##1.下载项目##</br>
-##2.安装依赖##</br>
+##1.下载项目，或运行##</br>
+`
+git clone https://github.com/wangyingjie123/webpack.git
+`
+</br>##2.安装依赖##</br>
 `
 npm install
 `
