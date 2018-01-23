@@ -1,0 +1,4 @@
+{
+  "greetText": "Hi there and greetings from JSON!",
+  "contentText":"这是webpack+react"
+}
