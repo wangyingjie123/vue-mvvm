@@ -8,6 +8,29 @@
     <title>Document</title>
 </head>
 <body>
-<div id='root'></div>
+<div id="app">
+    <div>
+        <div>这里的数据1======<span>{{a.b}}</span></div>
+        <div>这里是数据2======<span style="color: green;">{{c}}</span></div>
+    </div>
+    <input type="text" v-model="a.b" value="">
+</div>
+<!-- 引入自己定义的mvvm模块 -->
+<script src="./mvvm2.js"></script>
+<script src="./observe.js"></script>
+<!--<script src="./observe-proxy.js"></script>-->
+<script src="./compile.js"></script>
+<script src="./dep.js"></script>
+<script src="./watcher.js"></script>
+<script type="text/javascript">
+    var myvue = new MyVue({
+        el: '#app',
+        data: {
+            a: {b: '你好, 我是渣渣辉'},
+            c: 'test',
+            o: [12, 5, 9, 8]
+        }
+    });
+</script>
 </body>
 </html>
