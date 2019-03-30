@@ -8,6 +8,10 @@ function Watcher(vm, exp, fn) {
     this.vm = vm; // vue实例
     // exp = 匹配的查找的对象”a.b”是字符串类型的值
     this.exp = exp;
+    // 我们希望的是在实例化Watcher时将相应的Watcher实例添加一次进dep订阅器即可，
+    // 而不希望在以后每次访问data.name属性时都加入一次dep订阅器。
+    // 所以我们在实例化执行this.get()函数时用Dep.target = this来标识当前Watcher实例，
+    // 当添加进dep订阅器后设置Dep.target=null。
     Dep.target = this;
     let val = vm;
     let arr = exp.split('.');

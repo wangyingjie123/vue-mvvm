@@ -30,7 +30,7 @@ function Compile(el, vm) {
             inputmvvm(node, vm);
             // 处理文本节点中的{{}}绑定
             if (node.nodeType === 3 && reg.test(text)) {
-                // 把匹配到的内容拆分成数组，比如匹配到a.b这样的形式                              
+                // 把匹配到的内容拆分成数组，比如匹配到a.b这样的形式
                 let arr = RegExp.$1.split('.');
                 let val = vm;
                 // 这里对我们匹配到的定义数组，会依次去遍历它，来实现对实例的深度赋值
@@ -82,9 +82,11 @@ function inputmvvm(node, vm) {
                     let val = vm;
                     let arr = exp.split('.');
                     arr.forEach(function (k, index) {
+                        // 这里判断到取到的不是对象数据类型，不做替换操作 （val = val[k]）
                         if (typeof val[k] === 'object') {
-                            val = val[k]
+                            val = val[k];
                         } else {
+                            // 判断是不是已经最后一个层级了index === arr.length-1，如果是的话直接把input中的值赋值进当前数据中即可
                             if (index === arr.length - 1) {
                                 val[k] = newVal
                             }
